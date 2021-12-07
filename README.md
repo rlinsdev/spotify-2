@@ -4,12 +4,14 @@
 * npx create-next-app -e with-tailwindcss spotify-2
 * npm install @heroicons/react
 * npm i next-auth@beta
+* npm install spotify-web-api-node
 
 
 ## Links
 * https://developer.spotify.com/
 * https://heroicons.com/
 * https://next-auth.js.org/getting-started/example
+* https://github.com/thelinmichael/spotify-web-api-node
 
 # Next.js + Tailwind CSS Example
 
