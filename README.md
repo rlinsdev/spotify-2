@@ -1,14 +1,15 @@
 # Spotify 2.0
 
 ## packages
-npx create-next-app -e with-tailwindcss spotify-2
+* npx create-next-app -e with-tailwindcss spotify-2
+* npm install @heroicons/react
+* npm i next-auth@beta
 
-npm install @heroicons/react
 
 ## Links
-https://developer.spotify.com/
-
-https://heroicons.com/
+* https://developer.spotify.com/
+* https://heroicons.com/
+* https://next-auth.js.org/getting-started/example
 
 # Next.js + Tailwind CSS Example
 
