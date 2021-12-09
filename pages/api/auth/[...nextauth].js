@@ -12,5 +12,35 @@ export default NextAuth({
     }),
     // ...add more providers here
   ],
-  secret: process.env.JWT_SECRET
-})
+  secret: process.env.JWT_SECRET,
+  pages: {
+    signIn: '/login'
+  },
+  callbacks: {
+    async jwt({token, account, user}) {
+
+      // initial signIn
+      if(account && user) {
+        return {
+          ...token,
+          accessToken: account.access_token,
+          refreshToken: account.refresh_token,
+          userName: account.providerAccountId,
+          accessTokenExpire: account.expires_at * 1000,
+
+          
+        }
+      }
+
+      // retrun preveus token if it is not expired 
+      if (Date.now() < token.accessTokenExpire) {
+        console.log('Valid token');
+        return token;
+      }
+
+      // Access token has expire, refresh it
+      console.log('Refreshing token');
+      return await refreshAccessToken(token);
+    },
+  },
+});
