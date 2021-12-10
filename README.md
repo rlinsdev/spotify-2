@@ -5,6 +5,7 @@
 * npm install @heroicons/react
 * npm i next-auth@beta
 * npm install spotify-web-api-node
+* npm install tailwind-scrollbar-hide
 
 
 ## Links
