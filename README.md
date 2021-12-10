@@ -7,6 +7,7 @@
 * npm install spotify-web-api-node
 * npm install tailwind-scrollbar-hide
 * npm i lodash
+* npm i recoil
 
 
 ## Links

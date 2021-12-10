@@ -15,11 +15,12 @@ function Sidebar() {
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
   const [playlists, setPlayLists] = useState([]);
+  const [playlistId, setPlaylistId] = useState(null);
+
+  console.log(playlistId)
 
   useEffect(()=> {
     if(spotifyApi.getAccessToken()) {
-      console.log('existe?')
-      console.log(spotifyApi)
       spotifyApi.getUserPlaylists().then((data)=>{
         setPlayLists(data.body.items);
       });
@@ -27,8 +28,6 @@ function Sidebar() {
 
   }, [session, spotifyApi]);
   
-  console.log(playlists);
-
   return (
     <div className="text-gray-500 p-5 text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen">
       <div className="space-y-4">
@@ -66,7 +65,8 @@ function Sidebar() {
         <hr className="border-t-[0.1px] border-gray-900" />
         {/* Play List */}
         {playlists.map((playlist)=> (
-          <p key={playlist.id} className="cursor-pointer hover:text-white">{playlist.name}</p>
+          <p key={playlist.id} className="cursor-pointer hover:text-white" onClick={()=>setPlaylistId(playlist.id)}>
+            {playlist.name}</p>
         ))}
       </div>
     </div>
