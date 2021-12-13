@@ -3,7 +3,7 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 import { shuffle } from "lodash";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { playlistIdState } from "../atoms/playListAtom";
+import { playlistIdState, playlistState } from "../atoms/playListAtom";
 
 const colors = [
   "from-indigo-500",
@@ -19,6 +19,7 @@ function Center() {
   const {data: session} = useSession();
   const [color, setColor] = useState(null);
   const playlistId = useRecoilValue(playlistIdState);
+  const [playlist, setPlayList] = useRecoilState(playlistState);
 
   useEffect(() => {
     setColor(shuffle(colors).pop());
