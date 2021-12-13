@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../atoms/playListAtom";
 import useSpotify from "../hooks/useSpotify";
+import Songs from "./Songs";
 
 const colors = [
   "from-indigo-500",
@@ -58,7 +59,7 @@ function Center() {
         </div>
       </section>
       <div>
-        {/* <Songs /> */}
+        <Songs />
       </div>
     </div>
   )
