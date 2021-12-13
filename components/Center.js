@@ -29,11 +29,12 @@ function Center() {
   }, [playlistId]);
 
     useEffect(()=> {
+      // console.log('PlaylistID: ',playlistId)
     spotifyApi.getPlaylist(playlistId).then((data) => {
       console.log('data: ', data);
       setPlayList(data.body);
     })
-    .catch((err) => console.log("Something went wrong! ",err));
+    .catch((err) => console.log("Something went wrong!!! ",err));
   }, [spotifyApi, playlistId]);
 
   console.log('play list: ', playlist);
@@ -51,7 +52,7 @@ function Center() {
         </div>
       </header>
       <section className={`flex items-end space-x-7 bg-gradient-to-b
-       to-black ${color} h-80 text-white padding-8`}>
+       to-black ${color} h-80 text-white p-8`}>
          <img className="h-44 w-44 shadow-2xl" src={playlist?.images?.[0]?.url} alt="" />
         <div>
           <p>PLAYLIST</p>
