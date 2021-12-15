@@ -29,15 +29,11 @@ function Center() {
   }, [playlistId]);
 
     useEffect(()=> {
-      // console.log('PlaylistID: ',playlistId)
     spotifyApi.getPlaylist(playlistId).then((data) => {
-      console.log('data: ', data);
       setPlayList(data.body);
     })
     .catch((err) => console.log("Something went wrong!!! ",err));
   }, [spotifyApi, playlistId]);
-
-  console.log('play list: ', playlist);
 
   return (
     <div className="flex-grow text-white h-screen overflow-y-scroll scrollbar-hide">

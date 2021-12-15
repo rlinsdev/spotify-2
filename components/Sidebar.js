@@ -19,7 +19,7 @@ function Sidebar() {
   const [playlists, setPlayLists] = useState([]);
   const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
-  console.log('You picked the playList: ' + playlistId);
+  //console.log('You picked the playList: ' + playlistId);
 
   useEffect(()=> {
     if(spotifyApi.getAccessToken()) {

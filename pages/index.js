@@ -5,12 +5,11 @@ import Sidebar from "../components/Sidebar"
 export default function Home() {
   return (
     <div className="bg-black h-screen overflow-hidden">
-      <h1></h1>
-      <main className="flex">
+       <main className="flex">
         <Sidebar />
         <Center />
       </main>
-      <div className="sticky botton-0">
+      <div className="sticky bottom-0">
         <Player />
       </div>
     </div>
