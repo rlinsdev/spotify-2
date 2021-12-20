@@ -18,6 +18,7 @@ function Player() {
     if(!songInfo) {
       spotifyApi.getMyCurrentPlayingTrack().then(data => {
         setCurrentIdTrack(data.body?.item?.id);
+        
         spotifyApi.getMyCurrentPlaybackState().then((data)=>{
           setIsPlaying(data.body?.is_playing);
         })
@@ -31,15 +32,23 @@ function Player() {
       setVolume(50);
     }
 
-  },[currentTrackIdState, spotifyApi, session])
+  }, [currentTrackIdState, spotifyApi, session])
 
+  //console.log('log: '+songInfo)
   return (
+    
 
-    // left
-    <div>
-      <div>opa opa opa</div>
-      <img className="hidden md:inline h-10 w-10" src={songInfo?.album?.images?.[0]?.url} alt="" />
-
+    <div className="h-24 gb-gradient-to-b from-black to-gray-900 text-white">
+      
+      <div>
+        <img 
+          className="hidden md:inline h-10 w-10" 
+          src={songInfo?.album?.images?.[0]?.url} alt="" />
+          <div>
+            <h3>{songInfo?.name}</h3>
+            <p>{songInfo?.artists?.[0].name}</p>
+          </div>
+      </div>
     </div>
   )
 }
