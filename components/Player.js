@@ -11,15 +11,13 @@ import {
   VolumeUpIcon,
   SwitchHorizontalIcon,
 } from "@heroicons/react/solid";
-
+import { debounce } from "lodash";
 import { useSession } from 'next-auth/react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { currentTrackIdState, isPlayingState } from '../atoms/songAtom';
 import useSongInfo from '../hooks/useSongInfo';
 import useSpotify from '../hooks/useSpotify';
-
-
 
 function Player() {
   const spotifyApi = useSpotify();
@@ -62,7 +60,20 @@ function Player() {
     }
   }, [currentTrackIdState, spotifyApi, session]);
 
-  //console.log('log: '+songInfo)
+  useEffect(()=>{
+    if(volume > 0 && volume < 100) {
+      debounceAdjustVolume(volume);
+    }
+  }, [volume]);
+  
+
+  const debounceAdjustVolume = useCallback(
+    debounce((volume) => {
+      spotifyApi.setVolume(volume).catch((err) => {console.log(err)});
+    }, 500),
+    []
+  );
+  
   return (
     <div className='h-24 gb-gradient-to-b from-black 
     to-gray-900 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8'>
