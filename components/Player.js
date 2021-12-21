@@ -70,12 +70,12 @@ function Player() {
   const debounceAdjustVolume = useCallback(
     debounce((volume) => {
       spotifyApi.setVolume(volume).catch((err) => {console.log(err)});
-    }, 500),
+    }, 100),
     []
   );
   
   return (
-    <div className='h-24 gb-gradient-to-b from-black 
+    <div className='h-24 bg-gradient-to-b from-black 
     to-gray-900 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8'>
       {/* flex */}
       <div className="flex items-center space-x-4">
@@ -86,7 +86,7 @@ function Player() {
         />
         <div>
           <h3>{songInfo?.name}</h3>
-          <p>{songInfo?.artists?.[0].name}</p>
+          <p>{songInfo?.artists?.[0]?.name}</p>
         </div>
       </div>
       {/* center */}
@@ -97,12 +97,12 @@ function Player() {
          />
 
       {isPlaying ? (
-        <PlayIcon className="button h-10 w-10" 
+        <PauseIcon className="button h-10 w-10" 
           onClick={handlePlayPause}
          />
 
       ):(
-        <PauseIcon className="button h-10 w-10" 
+        <PlayIcon className="button h-10 w-10" 
           onClick={handlePlayPause}
          />
       )}
